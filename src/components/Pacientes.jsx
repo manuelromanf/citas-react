@@ -1,8 +1,14 @@
 
 
-export const Pacientes = ({pacientes}) => {
+export const Pacientes = ({pacientes, setPaciente, eliminarPaciente}) => {
 
+  const handleEliminar = () => {
+    const respuesta = confirm('Deseas eliminar ese paciente?');
 
+    if(respuesta){
+      eliminarPaciente(pacientes.id)
+    }
+  }
 
   return (
     <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
@@ -30,11 +36,14 @@ export const Pacientes = ({pacientes}) => {
           <button
           type="button"
           className=" text-indigo-600 hover:text-indigo-800 font-bold uppercase text-center cursor-pointer hover:underline"
+          onClick={() => setPaciente(pacientes)}
           >Editar</button>
+
 
           <button
           type="button"
           className=" text-red-600 hover:text-red-800 font-bold uppercase text-center cursor-pointer hover:underline"
+          onClick={handleEliminar}
           >Eliminar</button>
         </div>
     </div>
