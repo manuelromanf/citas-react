@@ -13,6 +13,13 @@ export const Formulario = ({pacientes, setPacientes}) => {
 
   const [error, setError] = useState(false);
 
+  const generarId = () =>{
+    const random = Math.random().toString(36).substr(2);
+    const fecha = Date.now().toString(36);
+
+    return random + fecha
+  }
+
   const handleSubmit = (e) =>{
     e.preventDefault();
 
@@ -31,7 +38,8 @@ export const Formulario = ({pacientes, setPacientes}) => {
       propietario, 
       email, 
       fecha, 
-      sintomas
+      sintomas,
+      id: generarId()
     }
 
     setPacientes([...pacientes, objetoPaciente]);
@@ -135,7 +143,7 @@ export const Formulario = ({pacientes, setPacientes}) => {
 
       <input 
         type="submit" 
-        className="text-indigo-600 font-bold uppercase text-center cursor-pointer hover:underline transition-color"  
+        className="text-indigo-600 font-bold hover:text-indigo-800 uppercase text-center cursor-pointer hover:underline transition-color"  
         value="Agregar paciente"
       />
         
